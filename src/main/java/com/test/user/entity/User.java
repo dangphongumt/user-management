@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserEntity extends Audit {
+public class User extends Audit {
     @Id
     @GeneratedValue
     private UUID id;

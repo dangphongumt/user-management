@@ -1,9 +1,12 @@
 package com.test.user.repository;
 
-import com.test.user.entity.UserEntity;
+
+import com.test.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
 import java.util.UUID;
 
-public interface UserRepository extends JpaRepository<UserEntity, UUID> {
+public interface UserRepository extends JpaRepository<User, UUID> {
+    Optional<User> findUserById(UUID id);
 }
