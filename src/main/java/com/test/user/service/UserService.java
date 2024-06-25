@@ -10,4 +10,5 @@ public interface UserService {
     List<UserResponse> getUsers();
     UserResponse createUser(UserRequest request);
     UserResponse updateUser(UUID userId, UserRequest request);
+    UserResponse getUserById(UUID userId);
 }

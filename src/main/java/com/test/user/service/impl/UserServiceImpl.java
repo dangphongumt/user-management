@@ -3,6 +3,8 @@ package com.test.user.service.impl;
 import com.test.user.dto.request.UserRequest;
 import com.test.user.dto.response.UserResponse;
 import com.test.user.entity.User;
+import com.test.user.enums.ErrorEnum;
+import com.test.user.exception.ResourceNotFoundException;
 import com.test.user.repository.UserRepository;
 import com.test.user.service.UserService;
 import jakarta.transaction.Transactional;
@@ -38,7 +40,13 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public UserResponse getUserById(UUID userId) {
+        User user = this.findUserById(userId);
+        return new UserResponse(user);
+    }
+
     private User findUserById(UUID id) {
-        return userRepository.findUserById(id).orElseThrow();
+        return userRepository.findUserById(id).orElseThrow(() -> new ResourceNotFoundException(ErrorEnum.USER_NOT_FOUND));
     }
 }
