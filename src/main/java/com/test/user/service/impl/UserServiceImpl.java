@@ -9,6 +9,7 @@ import com.test.user.repository.UserRepository;
 import com.test.user.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,7 +38,14 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserResponse updateUser(UUID userId, UserRequest request) {
         User user = this.findUserById(userId);
-        return null;
+        
+        System.out.println(user.toString());
+        
+        BeanUtils.copyProperties(request, user);//refer Jackson mapper for case complex
+        
+        System.out.println(user.toString());
+        
+        return new UserResponse(userRepository.save(user));
     }
 
     @Override

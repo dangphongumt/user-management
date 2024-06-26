@@ -5,6 +5,7 @@ import com.test.user.dto.request.UserRequest;
 import com.test.user.dto.response.UserResponse;
 import com.test.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,13 +29,13 @@ public class UserController {
     }
 
     @PostMapping
-    public UserResponse createUser(@RequestBody UserRequest request) {
-        return userService.createUser(request);
+    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest request) {
+        return new ResponseEntity<>(userService.createUser(request), HttpStatus.CREATED);
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<UserResponse> updateUserById(@RequestParam UUID userId, @RequestBody UserRequest request) {
-        
-        return new ResponseEntity<>(null);
+    public ResponseEntity<UserResponse> updateUserById(@PathVariable UUID userId, @RequestBody UserRequest request) {
+        //todo: check uuid format
+        return new ResponseEntity<>(userService.updateUser(userId, request), HttpStatus.OK);
     }
 }

@@ -14,6 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class User extends Audit {
     @Id
     @GeneratedValue

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Setter
@@ -15,6 +16,8 @@ public class UserResponse {
     private String userName;
     private String fullName;
     private String phoneNumber;
+    private Instant createdAt;
+    private Instant updatedAt;
 
     public UserResponse(User user) {
         if (user != null) {
@@ -22,6 +25,8 @@ public class UserResponse {
             this.userName = user.getUserName();
             this.fullName = user.getFullName();
             this.phoneNumber = user.getPhoneNumber();
+            this.createdAt = user.getCreatedAt();
+            this.updatedAt = user.getUpdatedAt();
         }
     }
 }
