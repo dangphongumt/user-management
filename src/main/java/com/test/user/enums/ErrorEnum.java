@@ -6,9 +6,10 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum ErrorEnum {
-    USER_NOT_FOUND(1, "User %s not found")
+    USER_NOT_FOUND(1, "User %s not found"),
+    INVALID_PARAMETERS(2,"Invalid parameters"),
     ;
     
-    private int index;
-    private String description;
+    private final int index;
+    private final String description;
 }
