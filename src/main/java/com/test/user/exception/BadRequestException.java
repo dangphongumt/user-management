@@ -17,4 +17,7 @@ public class BadRequestException extends RuntimeException {
         this.description = description;
         this.data = data;
     }
+    public BadRequestException(Object data) {
+        this.data = data;
+    }
 }
