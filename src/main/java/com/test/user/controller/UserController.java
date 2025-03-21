@@ -4,6 +4,8 @@ package com.test.user.controller;
 import com.test.user.dto.request.UserRequest;
 import com.test.user.dto.response.UserResponse;
 import com.test.user.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/users")
+@Tag(name = "User API", description = "REST API for management user")
 public class UserController {
     private final UserService userService;
 
@@ -29,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest request) {
+    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest request) {
         return new ResponseEntity<>(userService.createUser(request), HttpStatus.CREATED);
     }
 
