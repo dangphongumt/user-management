@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: Abc112358
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+user-service:
+  security:
+    jwt:
+      secret-key: G3D3CQfSeNkdpu1/379m46UJhZQ94JaZwtxyNs/hhelYDR/Q8xIHCDoLx+nT1yQKUBwY8tsxiWeWeoVKNDp1Cw==
+      expire-in: 604800 #7 days

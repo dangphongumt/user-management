@@ -82,4 +82,15 @@ public class GlobalExceptionHandler {
         problemDetail.setProperties(properties);
         return problemDetail;
     }
+
+    @ExceptionHandler(Exception.class)
+    public ProblemDetail handleException(Exception ex) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage());
+        Map<String, Object> properties = new HashMap<>();
+//        properties.put(CODE, ex.getCode());
+        properties.put(DESCRIPTION, ex);
+
+        problemDetail.setProperties(properties);
+        return problemDetail;
+    }
 }
