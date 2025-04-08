@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   application:
     name: user-service
@@ -13,7 +15,7 @@ spring:
       ddl-auto: update
     show-sql: true
   kafka:
-    bootstrap-servers: test
+    bootstrap-servers: localhost:9092
     topic:
       name: US
 
